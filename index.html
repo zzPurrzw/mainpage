@@ -5,47 +5,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zzPurrzw - Home</title>
     <style>
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding-top: 10vh;
-        }
-        h1 {
-            color: #58a6ff;
-            font-size: 3rem;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #8b949e;
-        }
-        .btn-container {
-            margin-top: 40px;
-        }
-        .btn {
-            background-color: #238636;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 8px;
+        /* Reseteo básico y fuente tipo Scratch */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff; color: #575e75; overflow-x: hidden; }
+
+        /* Barra Superior (Topbar) Cyan */
+        .navbar { 
+            background-color: #00d3d3; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 16px; 
+            height: 48px; 
+            color: white; 
+            font-size: 13px; 
             font-weight: bold;
-            transition: background 0.2s;
-            display: inline-block;
-            margin: 10px;
         }
-        .btn:hover {
-            background-color: #2ea043;
+        .navbar .nav-item { margin-right: 20px; cursor: pointer; }
+        .navbar .nav-item:hover { color: #e0f8f8; }
+        
+        .btn-see-inside { 
+            background: transparent; 
+            border: 1px solid white; 
+            color: white; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
+        .btn-see-inside:hover { background: rgba(255,255,255,0.2); }
+
+        .title-container { margin-left: 20px; flex-grow: 1; }
+        .title-input { 
+            background: white; 
+            color: #00d3d3; 
+            border: none; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            width: 100%;
+            max-width: 350px; 
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* Área Central (Reproductor) */
+        .main-content { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px; 
+        }
+
+        /* Controles (Bandera verde, pausa, etc.) */
+        .controls { 
+            display: flex; 
+            gap: 15px; 
+            margin-bottom: 5px; 
+            width: 480px; /* Tamaño clásico de Scratch */
+            align-items: center;
+        }
+        .controls span { cursor: pointer; font-size: 20px; user-select: none; }
+        .icon-flag { color: #4caf50; }
+        .icon-stop { color: #f44336; }
+        
+        /* Pantalla Gris (Stage) */
+        .stage { 
+            background-color: #e6e8e6; 
+            width: 480px; 
+            height: 360px; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative;
+        }
+        .play-button { 
+            background: rgba(255,255,255,0.9); 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 35px; 
+            color: #4c97ff; 
+            cursor: pointer; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .play-button:hover { transform: scale(1.05); }
+
+        /* Cuadrícula de Proyectos */
+        .projects-section { 
+            width: 480px; 
+            margin-top: 15px; 
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+        }
+        .card { 
+            border: 1px solid #d9d9d9; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            background: white; 
+            cursor: pointer;
+        }
+        .card:hover { border-color: #4c97ff; }
+        .thumb { 
+            background-color: #eee; 
+            height: 105px; 
+            width: 100%; 
+            display:flex; 
+            justify-content:center; 
+            align-items:center; 
+            color:#999; 
+            font-size: 12px;
+            object-fit: cover;
+        }
+        .info { padding: 8px; }
+        .info h4 { 
+            font-size: 12px; 
+            margin-bottom: 2px; 
+            color: #333;
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+        }
+        .info p { font-size: 11px; color: #999; }
+        .see-more { 
+            display: block; 
+            margin-top: 10px; 
+            color: #4c97ff; 
+            text-decoration: none; 
+            font-size: 13px; 
+        }
+        .see-more:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <h1>🐾 zzPurrzw Hub 🐾</h1>
-    <p>Bienvenido al cuartel general oficial del desarrollo y el caos.</p>
-    
-    <div class="btn-container">
-        <a href="https://zzpurrzw.github.io/editor.html" class="btn">open teh cool editor</a>
+
+    <div class="navbar">
+        <div class="nav-item">🌐</div>
+        <div class="nav-item">File</div>
+        <div class="nav-item">Edit</div>
+        <div class="nav-item">Addons</div>
+        <div class="nav-item">Settings</div>
+        <button class="btn-see-inside">🔄 See inside</button>
+        <div class="title-container">
+            <input class="title-input" type="text" value="back to the very very super cool home idk but uh yeah super cool" readonly>
+        </div>
     </div>
+
+    <div class="main-content">
+        
+        <div class="controls">
+            <span class="icon-flag">🏴</span>
+            <span class="icon-stop">🛑</span>
+            <span style="margin-left: 10px; font-size: 14px;">🔊 ────────</span>
+            <span style="margin-left: auto;">🔲</span>
+        </div>
+
+        <div class="stage">
+            <a href="https://zzpurrzw.github.io/projects/" style="text-decoration: none;">
+                <div class="play-button">▶️</div>
+            </a>
+        </div>
+
+        <div class="projects-section">
+            <div class="grid">
+                <div class="card">
+                    <div class="thumb" style="background: #a8f0a8; color: black; font-weight: bold;">SPRUNKI</div>
+                    <div class="info">
+                        <h4>Greenmon's Expan...</h4>
+                        <p>by greenmon</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb"></div>
+                    <div class="info">
+                        <h4>7/25的一言</h4>
+                        <p>by tsutob</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb" style="background: white;">👀 🤖</div>
+                    <div class="info">
+                        <h4>Do Hourdy</h4>
+                        <p>by yellowfan</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb" style="background: #e6e6e6;">🅰️ 🅱️</div>
+                    <div class="info">
+                        <h4>Alphabet Lore Frie...</h4>
+                        <p>by theweatherclouds</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb"></div>
+                    <div class="info">
+                        <h4>Students Are Bec...</h4>
+                        <p>by larpydominoes22</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="thumb"></div>
+                    <div class="info">
+                        <h4>Two-Player Tag</h4>
+                        <p>by bottleofwater9181</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="see-more">See more projects</a>
+        </div>
+
+    </div>
+
 </body>
 </html>
