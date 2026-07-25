@@ -48,9 +48,19 @@
 
         .main-content { 
             display: flex; 
-            flex-direction: column; 
+            justify-content: flex-end; 
             align-items: center; 
-            padding-top: 5vh; 
+            min-height: calc(100vh - 48px); 
+            padding: 24px 40px 24px 24px; 
+        }
+
+        .content-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 32px;
+            width: 100%;
+            max-width: 1280px;
         }
 
         .stage-container {
@@ -59,6 +69,43 @@
             border-radius: 8px;
             border: 1px solid #d9d9d9;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: min(100%, 560px);
+            margin-left: auto;
+        }
+
+        .video-card {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d9d9d9;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: min(100%, 560px);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 315px;
+            border: 0;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 960px) {
+            .main-content {
+                justify-content: center;
+                padding: 24px;
+            }
+
+            .content-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stage-container,
+            .video-card {
+                margin-left: 0;
+                width: 100%;
+                max-width: 560px;
+            }
         }
 
         .controls { 
@@ -88,7 +135,7 @@
 
         .stage h1 { color: #5f5f5f; font-size: 2.5rem; margin-bottom: 10px; }
         .stage p { font-size: 1.1rem; color: #8b949e; margin-bottom: 40px; }
-
+        
         .btn {
             background-color: #ffffff;
             color: rgb(0, 0, 0);
@@ -117,26 +164,29 @@
     </div>
 
     <div class="main-content">
-        <div class="stage-container">
-            
-            <div class="controls">
-                <span class="icon-flag">dont look at me</span>
-                <span class="icon-stop">also dont look at me</span>
-                <span style="margin-left: 10px; font-size: 14px; color: #999;">🔊 ────────</span>
+        <div class="content-row">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/oNl5qmcdFA4?rel=0" title="Video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
 
-            <div class="stage">
-                <h1>welcomeeeeeeeeeeeeeeeeeeee</h1>
-                <p>Welcome to the uhm yeah zzPurrzw hii</p>
-                
-                <div>
-                    <a href="https://zzpurrzw.github.io/editor.html" class="btn">open teh cool editor</a>
-                    <a href="https://zzpurrzw.github.io/addons.html" class="btn">hop to the addons</a>
-                    <a href="https://zzpurrzw.github.io" class="btn">go to projects</a>
+            <div class="stage-container">
+                <div class="controls">
+                    <span class="icon-flag">dont look at me</span>
+                    <span class="icon-stop">also dont look at me</span>
+                    <span style="margin-left: 10px; font-size: 14px; color: #999;">🔊 ────────</span>
                 </div>
 
+                <div class="stage">
+                    <h1>welcomeeeeeeeeeeeeeeeeeeee</h1>
+                    <p>Welcome to the uhm yeah zzPurrzw hii</p>
+                    
+                    <div>
+                        <a href="https://zzpurrzw.github.io/editor.html" class="btn">open teh cool editor</a>
+                        <a href="https://zzpurrzw.github.io/addons.html" class="btn">hop to the addons</a>
+                        <a href="https://zzpurrzw.github.io" class="btn">go to projects</a>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 
